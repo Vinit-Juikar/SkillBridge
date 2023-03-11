@@ -50,7 +50,7 @@ class LoginOrRegister extends StatelessWidget {
               height: 100,
               alignment: Alignment.center,
               child: AnimatedTextKit(
-                pause: const Duration(seconds: 3),
+                pause: const Duration(seconds: 4),
                 repeatForever: true,
                 animatedTexts: [
                   TyperAnimatedText(
@@ -66,7 +66,7 @@ class LoginOrRegister extends StatelessWidget {
             ),
             const SizedBox(
               height: 100,
-              child: Text('Unearth the ultimate almanac of \n     Kingdom Animalia with us.',style: TextStyle(fontSize: 15,color: Colors.white,),),
+              child: Text('Easy Profile Setup With Us,',style: TextStyle(fontSize: 15,color: Colors.white,),),
             ),
             // Container(
             //   child: GestureDetector(

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class MyPhone extends StatefulWidget {
   static String verify = '';
@@ -32,18 +33,26 @@ class _MyPhoneState extends State<MyPhone> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 25,
-              ),
-              const Text(
-                "Phone Verification",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              Lottie.asset('assets/signIn.json'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text(
+                    "Phone Verification  ",
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  Icon(
+                    Icons.call,
+                    size: 30,
+                    color: Colors.green,
+                  )
+                ],
               ),
               const SizedBox(
                 height: 10,
               ),
               const Text(
-                "We need to register your phone without getting started!",
+                "Please enter your phone number in order to register.",
                 style: TextStyle(
                   fontSize: 16,
                 ),
@@ -83,10 +92,11 @@ class _MyPhoneState extends State<MyPhone> {
                     Expanded(
                         child: TextField(
                       onChanged: ((value) {
-                        phone = value;
+                        phone = value; 
                       }),
                       keyboardType: TextInputType.phone,
                       decoration: const InputDecoration(
+                        hoverColor: Colors.green,
                         border: InputBorder.none,
                         hintText: "Phone",
                       ),
@@ -97,11 +107,14 @@ class _MyPhoneState extends State<MyPhone> {
               const SizedBox(
                 height: 20,
               ),
-              SizedBox(
+              Container(
+                alignment: Alignment.center,
                 width: double.infinity,
                 height: 45,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 10),
                         backgroundColor: Colors.green.shade600,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
@@ -109,8 +122,7 @@ class _MyPhoneState extends State<MyPhone> {
                       await FirebaseAuth.instance.verifyPhoneNumber(
                         phoneNumber: countryCode.text + phone,
                         verificationCompleted:
-                            (PhoneAuthCredential credential) {
-                        },
+                            (PhoneAuthCredential credential) {},
                         verificationFailed: (FirebaseAuthException e) {},
                         codeSent: (String verificationId, int? resendToken) {
                           MyPhone.verify = verificationId;
@@ -119,7 +131,7 @@ class _MyPhoneState extends State<MyPhone> {
                         codeAutoRetrievalTimeout: (String verificationId) {},
                       );
                     },
-                    child: const Text("Send the code")),
+                    child: const Text("Send the code",style: TextStyle(fontSize: 16),)),
               )
             ],
           ),

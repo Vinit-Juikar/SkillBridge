@@ -1,10 +1,9 @@
-
+import 'phone.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pinput/pinput.dart';
-import 'package:skillbridge/login/phone.dart';
-import 'package:skillbridge/seeker/register_info_seeker.dart';
 
 class MyVerify extends StatefulWidget {
   const MyVerify({Key? key}) : super(key: key);
@@ -49,6 +48,10 @@ class _MyVerifyState extends State<MyVerify> {
               const SizedBox(
                 height: 25,
               ),
+              GestureDetector(
+                
+                child: Lottie.asset('assets/otp.json'),
+              ),
               const Text(
                 "Phone Verification",
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -57,7 +60,7 @@ class _MyVerifyState extends State<MyVerify> {
                 height: 10,
               ),
               const Text(
-                "We need to register your phone without getting started!",
+                "Please enter the OTP sent to your mobile number.",
                 style: TextStyle(
                   fontSize: 16,
                 ),
@@ -68,6 +71,16 @@ class _MyVerifyState extends State<MyVerify> {
               ),
               Pinput(
                 length: 6,
+                // onLongPress: () {
+                //   Fluttertoast.showToast(
+                //       msg: "This is a toast message",
+                //       toastLength: Toast.LENGTH_SHORT,
+                //       gravity: ToastGravity.BOTTOM,
+                //       timeInSecForIosWeb: 1,
+                //       backgroundColor: Colors.grey[600],
+                //       textColor: Colors.white,
+                //       fontSize: 16.0);
+                // },
                 // defaultPinTheme: defaultPinTheme,
                 // focusedPinTheme: focusedPinTheme,
                 // submittedPinTheme: submittedPinTheme,
@@ -127,7 +140,4 @@ class _MyVerifyState extends State<MyVerify> {
       ),
     );
   }
-}
-void next(context){
-  Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterInfoSeeker(),));
 }

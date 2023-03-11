@@ -5,7 +5,7 @@ import 'package:skillbridge/login/auth.dart';
 import 'package:skillbridge/login/login_or_register.dart';
 import 'package:skillbridge/login/phone.dart';
 import 'package:skillbridge/login/provider_seeker.dart';
-import 'package:skillbridge/seeker/register_info_seeker.dart';
+import 'package:skillbridge/seeker/seeker_profile.dart';
 import 'verify.dart';
 
 class WidgetTreeWindow extends StatefulWidget {
@@ -28,12 +28,13 @@ class _WidgetTreeWindowState extends State<WidgetTreeWindow> {
             return const ProviderSeeker();
         } else {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             initialRoute: 'information',
             routes: {
               'information': (context) =>  const LoginOrRegister(),
               'phone': (context) => const MyPhone(),
               'verify': (context) => const MyVerify(),
-              'home': (context) => const RegisterInfoSeeker(),
+              'home': (context) => const SeekerProfile(),
             },
           );
         }
